@@ -8,21 +8,18 @@ class Interface:
         
         self.set_top_pannel(mainself, display)
         self.set_paned(mainself, display)
-        
-        self.file_frame = None
-        self.graph_frame = None
+        self.set_status(mainself, display)
     
     def set_top_pannel(self, mainself, display):
         '''установка верхней панели'''
         
         frame = ttk.Frame(display.root, padding=10)
         frame.pack(fill=tkinter.X)
-        
 
-        self.file_frame = ttk.Label(frame, text="Файл не выбран")
-        self.file_frame.pack(side=tkinter.LEFT, padx=5)
+        display.file_frame = ttk.Label(frame, text="Файл не выбран")
+        display.file_frame.pack(side=tkinter.LEFT, padx=5)
 
-        load_btn = ttk.Button(frame, text="Загрузить CSV", command=lambda: self.load_csv(mainself,display))
+        load_btn = ttk.Button(frame, text="Загрузить CSV", command=lambda: mainself.Values.load(display))
         load_btn.pack(side=tkinter.LEFT, padx=5)
     
     def set_paned(self, mainself, display):
@@ -61,16 +58,23 @@ class Interface:
         frame = ttk.Frame(paned)
         paned.add(frame, weight=1)
 
-        self.plot_frame = ttk.Frame(frame)
-        self.plot_frame.pack(fill=tkinter.BOTH, expand=True)
+        display.graph_frame = ttk.Frame(frame)
+        display.graph_frame.pack(fill=tkinter.BOTH, expand=True)
+        
+    def set_status(self, mainself, display):
+        
+        display.status = ttk.Label(display.root, text="Готов", relief=tkinter.SUNKEN, anchor=tkinter.W)
+        display.status.pack(side=tkinter.BOTTOM, fill=tkinter.X)
         
     def load_plot_graph(self, mainself, display, funcNum:int):
-        
+
         print(funcNum)
         
     def load_csv(self, mainself, display):
         '''обёртка для загрузки файлов формата .csv'''
-        pass
+        
+        
+        
     
     # все эти переменные лишь обёртка для каждой из кнопок
     # сделано это было потому что иначе не получилось :(

@@ -8,13 +8,13 @@ class Display:
     
     def __init__(self, mainself):
         
-        # буффер для диаграммы
-        self.data_frame = None 
-        
         self.create_window()
         self.set_style()
         
-        self.Interface = Interface(mainself,self)
+        self.data_frame = None 
+        self.file_frame = None
+        self.graph_frame = None
+        self.status = None
     
     def create_window(self):
         '''создание экземпляра окна'''
@@ -30,8 +30,5 @@ class Display:
         self.style.theme_use('clam')
         self.style.configure('TButton', font=('Arial', 10), padding=5)
         self.style.configure('TLabel', font=('Arial', 10))
-        
-    def load_gui(self):
-        '''Подключает все кнопки и поля к tkinter'''
         
     
