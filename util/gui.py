@@ -1,6 +1,16 @@
 import tkinter
 from tkinter import ttk
 
+# все функции для графиков
+from plot.discount_distribution import func as discount_distribution
+from plot.discount_vs_amount import func as discount_vs_amount
+from plot.marketing_vs_boxes import func as marketing_vs_boxes
+from plot.monthly_revenue import func as monthly_revenue
+from plot.sales_by_channel import func as sales_by_channel
+from plot.sales_by_country import func as sales_by_country
+from plot.sales_by_product import func as sales_by_product
+from plot.top_salespersons import func as top_salespersons
+
 class Interface:
     '''Класс для создания всех кнопок внутри tkinter'''
     
@@ -37,20 +47,31 @@ class Interface:
         frame = ttk.LabelFrame(paned, text="Выбор анализа", padding=10)
         paned.add(frame, weight=0)
         
-        analyses = [
-            ("Месячная выручка",     self.plot_monthly_revenue),
-            ("Продажи по продуктам", self.plot_sales_by_product),
-            ("Продажи по странам",   self.plot_sales_by_country),
-            ("Продажи по каналам",   self.plot_sales_by_channel),
-            ("Топ-10 продавцов",     self.plot_top_salespersons),
-            ("Скидка vs Сумма",      self.plot_discount_vs_amount),
-            ("Маркетинг vs Коробки", self.plot_marketing_vs_boxes),
-            ("Распределение скидок", self.plot_discount_distribution)
-        ]
+        # пришлось подключать к каждой кнопке вучную :(
         
-        for text, command in analyses:
-            btn = ttk.Button(frame, text=text, command=lambda: command(mainself,display))
-            btn.pack(fill=tkinter.X, pady=3)
+        btn = ttk.Button(frame, text="Месячная выручка", command=lambda: monthly_revenue(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Продажи по продуктам", command=lambda: sales_by_product(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Продажи по странам", command=lambda: sales_by_country(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Продажи по каналам", command=lambda: sales_by_channel(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Топ-10 продавцов", command=lambda: top_salespersons(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Скидка vs Сумма", command=lambda: discount_vs_amount(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Маркетинг vs Коробки", command=lambda: marketing_vs_boxes(display))
+        btn.pack(fill=tkinter.X, pady=3)
+        
+        btn = ttk.Button(frame, text="Распределение скидок", command=lambda: discount_distribution(display))
+        btn.pack(fill=tkinter.X, pady=3)
         
     def set_right_pannel(self, mainself, display, paned):
         '''Установка правой панели с графиком'''
@@ -65,33 +86,3 @@ class Interface:
         
         display.status = ttk.Label(display.root, text="Готов", relief=tkinter.SUNKEN, anchor=tkinter.W)
         display.status.pack(side=tkinter.BOTTOM, fill=tkinter.X)
-        
-    def load_plot_graph(self, mainself, display, funcNum:int):
-
-        print(funcNum)
-        
-    def load_csv(self, mainself, display):
-        '''обёртка для загрузки файлов формата .csv'''
-        
-        
-        
-    
-    # все эти переменные лишь обёртка для каждой из кнопок
-    # сделано это было потому что иначе не получилось :(
-    
-    def plot_monthly_revenue(self, mainself, display):
-        pass
-    def plot_sales_by_product(self, mainself, display):
-        pass
-    def plot_sales_by_country(self, mainself, display):
-        pass
-    def plot_sales_by_channel(self, mainself, display):
-        pass
-    def plot_top_salespersons(self, mainself, display):
-        pass
-    def plot_discount_vs_amount(self, mainself, display):
-        pass
-    def plot_marketing_vs_boxes(self, mainself, display):
-        pass
-    def plot_discount_distribution(sel, mainself, display):
-        pass
