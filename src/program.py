@@ -1,10 +1,13 @@
+from src.display import Display
+
 class Program():
     '''Ядро программы'''
     
     def __init__(self):
-        pass
+        
+        self.Display = Display(self)
     
     def main(self):
         '''Основной цикл программы'''
         
-        pass
+        self.Display.root.mainloop()

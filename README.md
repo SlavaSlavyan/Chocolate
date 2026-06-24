@@ -29,12 +29,15 @@
     - fonttools
     - cycler
     - python-dateutil
-    - contourpy,
+    - contourpy
+
+- **pandas** - работа с большими данными
+    - tzdata
 
 ## Как запустить
 
 Для запуска необходимо скачать все необходимые библиотеки из **Requirements**. Комманда для быстрой установки библиотек:
 
 ```bash
-pip install matplotlib
+pip install matplotlib, pandas
 ```
