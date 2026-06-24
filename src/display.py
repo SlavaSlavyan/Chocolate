@@ -19,8 +19,9 @@ class Display:
         '''создание экземпляра окна'''
         
         self.root = tkinter.Tk()
-        self.root.title("Chockolate Analisator SlavaSlavyan (CASLL)")
+        self.root.title("Chocolate Analisator SlavaSlavyan (CASLL)")
         self.root.geometry("1200x800")
+        self.root.iconbitmap("data\\icon.ico")
         
     def set_style(self):
         '''задаём общий стиль программы'''
