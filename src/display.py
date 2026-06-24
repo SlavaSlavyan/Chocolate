@@ -21,7 +21,11 @@ class Display:
         self.root = tkinter.Tk()
         self.root.title("Chocolate Analisator SlavaSlavyan (CASLL)")
         self.root.geometry("1200x800")
-        self.root.iconbitmap("data\\icon.ico")
+        
+        try:
+            self.root.iconbitmap("data\\icon.ico")
+        except:
+            pass
         
     def set_style(self):
         '''задаём общий стиль программы'''
